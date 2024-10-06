@@ -21,15 +21,23 @@ data = {
 max_length = max(len(country) for country in data["Countries"])
 # Set a base margin and adjust it based on the maximum length
 base_margin = 50  # Base margin
-dynamic_margin = base_margin + (max_length * 10)  # Adjust as needed for visual appeal
+dynamic_margin = base_margin + (max_length * 10)  # Adjust margin based on label length
 
-# Instead of embedding the layout directly in the Markdown string, pass it as a Python variable
+# Create the Markdown for the heatmap with dynamic layout adjustments
 layout = {
-    "margin": {"l": dynamic_margin}
+    "margin": {
+        "l": dynamic_margin,  # Left margin based on label length
+        "t": 50,  # Top margin
+        "b": 50,  # Bottom margin
+        "r": 50   # Right margin
+    }
 }
 
-# Create the Markdown for the heatmap
-md = "<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout=layout|>"
+# Convert the layout dictionary to a string
+layout_str = str(layout).replace("'", '"')  # Replace single quotes with double quotes for JSON compatibility
+
+# Create the Markdown
+md = f"<|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={layout_str}|>"
 
 # Run the GUI
-Gui(md, data=data, layout=layout).run()
+Gui(md).run()

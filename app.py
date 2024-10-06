@@ -1,3 +1,4 @@
+import plotly.graph_objects as go
 from taipy import Gui
 
 # Data for the heatmap
@@ -12,10 +13,22 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"],
 }
 
-# Using custom settings for margins
-md = """
-<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|
-layout={{"margin": {{"l": 150, "r": 10, "b": 50, "t": 10}}}}|height=500|width=700|>
-"""
+# Create the heatmap using Plotly
+fig = go.Figure(data=go.Heatmap(
+    z=data['Temperatures'],
+    x=data['Seasons'],
+    y=data['Countries'],
+    colorscale='Viridis'))
 
+# Update layout to prevent label cutoff
+fig.update_layout(
+    margin=dict(l=150, r=10, b=50, t=10),
+    height=500,
+    width=700
+)
+
+# Define the markdown to render the Plotly chart in Taipy
+md = "<|{fig}|plotly|>"
+
+# Run the Taipy GUI with the Plotly figure
 Gui(md).run()

@@ -25,11 +25,7 @@ base_margin = 50  # Base margin
 dynamic_margin = base_margin + (max_length * 10)  # Adjust margin based on label length
 
 # Create the Markdown for the heatmap with dynamic layout adjustments
-layout = {
-    "margin": {
-        "l": {dynamic_margin}
-    }
-}
+layout = {"margin": {"l": dynamic_margin}}
 
 
 # Create the Markdown for Taipy

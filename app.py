@@ -9,8 +9,8 @@ data = {
         [22.3, 15.5, 13.4, 19.6],
     ],
     "Countries": [
-        "United Kingdom United Kingdom United Kingdom", 
-        "United States United States", 
+        "  United Kingdom United Kingdom", 
+        " United States United States", 
         "Brazil", 
         "Germany"
     ],
@@ -19,6 +19,7 @@ data = {
 
 # Calculate the maximum length of the y-axis labels
 max_length = max(len(country) for country in data["Countries"])
+
 # Set a base margin and adjust it based on the maximum length
 base_margin = 50  # Base margin
 dynamic_margin = base_margin + (max_length * 10)  # Adjust margin based on label length
@@ -26,18 +27,13 @@ dynamic_margin = base_margin + (max_length * 10)  # Adjust margin based on label
 # Create the Markdown for the heatmap with dynamic layout adjustments
 layout = {
     "margin": {
-        "l": dynamic_margin,  # Left margin based on label length
-        "t": 50,  # Top margin
-        "b": 50,  # Bottom margin
-        "r": 50   # Right margin
+        "l": dynamic_margin
     }
 }
 
-# Convert the layout dictionary to a string
-layout_str = str(layout).replace("'", '"')  # Replace single quotes with double quotes for JSON compatibility
 
-# Create the Markdown
-md = f"<|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={layout_str}|>"
+# Create the Markdown for Taipy
+md = f"<|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={layout}|>"
 
 # Run the GUI
 Gui(md).run()

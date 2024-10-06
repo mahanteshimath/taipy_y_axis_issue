@@ -12,16 +12,16 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"],
 }
 
-# Custom CSS to apply padding to the chart
+# Custom CSS for adjusting margins
 css = """
 <style>
     .taipy-chart {
-        padding-left: 100px;  /* Increase left padding to prevent y-axis labels from being cut off */
+        margin-left: 150px;  /* Increase left margin */
     }
 </style>
 """
 
-# Heatmap configuration with custom CSS for better label visibility
+# Updated heatmap with CSS to solve label cutoff issue
 md = f"""
 {css}
 <|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|height=500|width=700|>

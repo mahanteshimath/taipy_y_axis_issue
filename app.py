@@ -27,7 +27,7 @@ dynamic_margin = base_margin + (max_length * 10)  # Adjust margin based on label
 # Create the Markdown for the heatmap with dynamic layout adjustments
 layout = {
     "margin": {
-        "l": dynamic_margin
+        "l": {dynamic_margin}
     }
 }
 

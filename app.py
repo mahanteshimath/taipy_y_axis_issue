@@ -1,5 +1,6 @@
 from taipy import Gui
 
+# Data for the heatmap
 data = {
     "Temperatures": [
         [17.2, 27.4, 28.6, 21.5],
@@ -11,9 +12,20 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"],
 }
 
-# Adjust chart width and height or padding around it
-md = """
-<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|width=800|height=600|padding=10px 20px 10px 100px|>
+# Custom CSS to apply padding to the chart
+css = """
+<style>
+    .taipy-chart {
+        padding-left: 100px;  /* Increase left padding to prevent y-axis labels from being cut off */
+    }
+</style>
 """
 
+# Heatmap configuration with custom CSS for better label visibility
+md = f"""
+{css}
+<|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|height=500|width=700|>
+"""
+
+# Run the GUI
 Gui(md).run()

@@ -24,9 +24,8 @@ base_margin = 50  # Base margin
 dynamic_margin = base_margin + (max_length * 10)  # Adjust as needed for visual appeal
 
 # Create the Markdown for the heatmap with dynamic layout adjustments
-md = f"""
-<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={{"margin": {{"l": {dynamic_margin}}}}}|>
-"""
+layout = f'{{"margin": {{"l": {dynamic_margin}}}}}'
+md = f"<|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={layout}|>"
 
 # Run the GUI
 Gui(md).run()

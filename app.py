@@ -10,7 +10,7 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"]
 }
 
-layout = {"margin": {"l": 120}}
+layout = {"margin": {"l": 250}}
 
 md = "<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={layout}|>"
 

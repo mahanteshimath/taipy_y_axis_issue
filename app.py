@@ -27,8 +27,11 @@ fig.update_layout(
     width=700
 )
 
-# Define the markdown to render the Plotly chart in Taipy
-md = "<|{fig}|plotly|>"
+# Convert Plotly figure to HTML
+html_fig = fig.to_html(full_html=False)
 
-# Run the Taipy GUI with the Plotly figure
+# Define the markdown to render the Plotly chart in Taipy using HTML
+md = f"<|{html_fig}|html|>"
+
+# Run the Taipy GUI with the Plotly figure embedded as HTML
 Gui(md).run()

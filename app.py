@@ -12,20 +12,10 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"],
 }
 
-# Custom CSS for adjusting margins
-css = """
-<style>
-    .taipy-chart {
-        margin-left: 150px;  /* Increase left margin */
-    }
-</style>
+# Using custom settings for margins
+md = """
+<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|
+layout={{"margin": {{"l": 150, "r": 10, "b": 50, "t": 10}}}}|height=500|width=700|>
 """
 
-# Updated heatmap with CSS to solve label cutoff issue
-md = f"""
-{css}
-<|{{data}}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|height=500|width=700|>
-"""
-
-# Run the GUI
 Gui(md).run()

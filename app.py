@@ -1,4 +1,3 @@
-import plotly.graph_objects as go
 from taipy import Gui
 
 # Data for the heatmap
@@ -13,25 +12,11 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"],
 }
 
-# Create the heatmap using Plotly
-fig = go.Figure(data=go.Heatmap(
-    z=data['Temperatures'],
-    x=data['Seasons'],
-    y=data['Countries'],
-    colorscale='Viridis'))
+# Creating the Markdown for the heatmap with layout adjustments
+md = """
+<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|>
+|layout|title=Temperature Heatmap|yaxis.title.text='Countries'|xaxis.title.text='Seasons'|margin.l=100|margin.b=50|>
+"""
 
-# Update layout to prevent label cutoff
-fig.update_layout(
-    margin=dict(l=150, r=10, b=50, t=10),
-    height=500,
-    width=700
-)
-
-# Convert Plotly figure to HTML
-html_fig = fig.to_html(full_html=False)
-
-# Define the markdown to render the Plotly chart in Taipy using HTML
-md = f"<|{html_fig}|html|>"
-
-# Run the Taipy GUI with the Plotly figure embedded as HTML
+# Running the GUI
 Gui(md).run()

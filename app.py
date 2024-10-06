@@ -10,6 +10,14 @@ data = {
     "Seasons": ["Winter", "Spring", "Summer", "Autumn"]
 }
 
+
+# Calculate the maximum length of the y-axis labels
+max_length = max(len(country) for country in data["Countries"])
+
+# Set a base margin and adjust it based on the maximum length
+base_margin = 50  # Base margin
+dynamic_margin = base_margin + (max_length * 10)  # Adjust margin based on label length
+
 layout = {"margin": {"l": 120}}
 
 md = "<|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Countries|layout={layout}|>"

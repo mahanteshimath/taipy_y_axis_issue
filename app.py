@@ -34,7 +34,7 @@ data = {
         [22.3, 15.5, 13.4, 19.6]   # Temperatures for Germany
     ],
     "Countries": [
-        "United Kingdom United Kingdom United Kingdom United Kingdom United Kingdom United Kingdom", 
+        "United Kingdom United Kingdom United KingdomUnited Kingdom United Kingdom United KingdomUnited Kingdom United Kingdom United KingdomUnited Kingdom United Kingdom United Kingdom United Kingdom United Kingdom United Kingdom", 
         "United States United States", 
         "Brazil", 
         "Germany"
